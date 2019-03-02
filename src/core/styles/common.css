@@ -1,0 +1,53 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+html, body
+{
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family: osr;
+}
+
+@font-face
+{
+    font-family: gm;
+    src: url(../fonts/gm.woff2)
+}
+@font-face
+{
+    font-family: rd;
+    src: url(../fonts/rd.woff2)
+}
+@font-face
+{
+    font-family: osr;
+    src: url(../fonts/osr.ttf)
+}
+@font-face
+{
+    font-family: rm;
+    src: url(../fonts/rm.ttf)
+}
+@font-face
+{
+    font-family: rmr;
+    src: url(../fonts/rmr.ttf)
+}
+@font-face
+{
+    font-family: rr;
+    src: url(../fonts/rr.ttf)
+}
+
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
