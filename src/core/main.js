@@ -1,9 +1,13 @@
 const electron = require('electron')
-const {app,BrowserWindow} = require('electron')
+const {
+    app,
+    BrowserWindow,
+    Tray
+} = require('electron')
 
 var win
-function createWindow() 
-{
+
+function createWindow() {
     win = new BrowserWindow({
         width: 250,
         height: 350,
@@ -17,29 +21,29 @@ function createWindow()
     })
     win.loadFile('src/core/load.html')
 
-    win.on('closed', () => 
-    {
+    win.on('closed', () => {
         win = null
     })
-    win.on('ready-to-show', () => 
-    {
+    win.on('ready-to-show', () => {
         win.show()
     })
+
+    app.on('activate', () => 
+    {
+        if(win === undefined) 
+        {
+            createWindow()
+        }
+    })
+
+    const trayIcon = new Tray('src/core/images/logo.png')
 }
 
-app.on('ready', createWindow)
-app.on('window-all-closed', () => 
-{
-    if (process.platform !== 'darwin') 
-    {
-        app.quit()
-    }
+app.on('ready', () => {
+    createWindow()
 })
-
-app.on('activate', () => 
-{
-    if(win === undefined) 
-    {
-        createWindow()
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
     }
 })
