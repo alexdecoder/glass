@@ -77,9 +77,9 @@ function showMainWindow() {
     mainWindow.on('ready-to-show', () => {
         mainWindow.show()
     })
-    app.on('activate', () => {
-        if (mainWindow === null) {
-            showMainWindow()
-        }
-    })
 }
+app.on('activate', () => {
+    if (mainWindow === null) {
+        showMainWindow()
+    }
+})
