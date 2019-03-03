@@ -41,7 +41,7 @@ app.on('window-all-closed', () => {
 })
 app.on('activate', () => 
 {
-    if (win === undefined) 
+    if(win === null) 
     {
         let myNotification = new Notification('To faggot:', {
             body: 'DIE A SLOW DEATH U FAG'
