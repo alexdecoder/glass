@@ -1,9 +1,5 @@
 const electron = require('electron')
-const {
-    app,
-    BrowserWindow,
-    Tray
-} = require('electron')
+const {app, BrowserWindow, Tray} = require('electron')
 
 var win
 
@@ -43,9 +39,6 @@ app.on('activate', () =>
 {
     if(win === null) 
     {
-        let myNotification = new Notification('To faggot:', {
-            body: 'DIE A SLOW DEATH U FAG'
-          })
         createWindow()
     }
 })
