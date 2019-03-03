@@ -1,9 +1,10 @@
 const electron = require('electron')
 const {app,BrowserWindow} = require('electron')
 
+var win
 function createWindow() 
 {
-    let win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 250,
         height: 350,
         show: false,
@@ -37,7 +38,7 @@ app.on('window-all-closed', () =>
 
 app.on('activate', () => 
 {
-    if (win === undefined) 
+    if(win === undefined) 
     {
         createWindow()
     }
