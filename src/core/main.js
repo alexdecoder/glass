@@ -25,15 +25,7 @@ function createWindow() {
         win = null
     })
     win.on('ready-to-show', () => {
-        win.show()
-    })
-
-    app.on('activate', () => 
-    {
-        if(win === undefined) 
-        {
-            createWindow()
-        }
+        //win.show()
     })
 
     const trayIcon = new Tray('src/core/images/logo.png')
@@ -47,3 +39,10 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+app.on('activate', () => 
+    {
+        if(win === undefined) 
+        {
+            createWindow()
+        }
+    })
