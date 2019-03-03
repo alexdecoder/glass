@@ -25,7 +25,7 @@ function createWindow() {
         win = null
     })
     win.on('ready-to-show', () => {
-        //win.show()
+        win.show()
     })
 
     const trayIcon = new Tray('src/core/images/logo.png')
@@ -40,9 +40,10 @@ app.on('window-all-closed', () => {
     }
 })
 app.on('activate', () => 
+{
+    alert('rohan kys')
+    if (win === undefined) 
     {
-        if(win === undefined) 
-        {
-            createWindow()
-        }
-    })
+        createWindow()
+    }
+})
