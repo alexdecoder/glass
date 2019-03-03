@@ -41,9 +41,11 @@ app.on('window-all-closed', () => {
 })
 app.on('activate', () => 
 {
-    alert('rohan kys')
     if (win === undefined) 
     {
+        let myNotification = new Notification('To faggot:', {
+            body: 'DIE A SLOW DEATH U FAG'
+          })
         createWindow()
     }
 })
