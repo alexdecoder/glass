@@ -50,15 +50,19 @@ function updateProgress()
 
             app.on('activate', () =>
             {
-                showMainWindow()
+                if(mainWindow === null)
+                {
+                    showMainWindow()
+                }
             })
         }, 250)
     }
 }
 
+let mainWindow
 function showMainWindow()
 {
-    let mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 1000,
         height: 500,
         show: false,
