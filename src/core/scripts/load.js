@@ -1,5 +1,5 @@
 const currentWindow = require('electron').remote.getCurrentWindow()
-const {BrowserWindow} = require('electron').remote
+const {BrowserWindow,app} = require('electron').remote
 
 var tasks = [
     task1,
@@ -46,27 +46,37 @@ function updateProgress()
         {
             currentWindow.hide()
 
-            let mainWindow = new BrowserWindow({
-                width: 1000,
-                height: 500,
-                show: false,
-                frame: false,
-                minHeight: 500,
-                minWidth: 1000,
-                icon: 'src/core/images/logo.png',
-                backgroundColor: '#424242',
-            })
-            mainWindow.loadFile('src/main/main.html')
-            mainWindow.on('closed', () => 
-            {
-                mainWindow = null
+            showMainWindow()
 
-                currentWindow.close()
-            })
-            mainWindow.on('ready-to-show', () => 
+            app.on('activate', () =>
             {
-                mainWindow.show()
+                showMainWindow()
             })
         }, 250)
     }
+}
+
+function showMainWindow()
+{
+    let mainWindow = new BrowserWindow({
+        width: 1000,
+        height: 500,
+        show: false,
+        frame: false,
+        minHeight: 500,
+        minWidth: 1000,
+        icon: 'src/core/images/logo.png',
+        backgroundColor: '#424242',
+    })
+    mainWindow.loadFile('src/main/main.html')
+    mainWindow.on('closed', () => 
+    {
+        mainWindow = null
+
+        currentWindow.close()
+    })
+    mainWindow.on('ready-to-show', () => 
+    {
+        mainWindow.show()
+    })
 }

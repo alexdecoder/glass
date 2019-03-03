@@ -1,5 +1,10 @@
 const electron = require('electron')
-const {app, BrowserWindow, Tray} = require('electron')
+const {
+    app,
+    BrowserWindow,
+    Tray,
+    Menu
+} = require('electron')
 
 var win
 
@@ -24,7 +29,7 @@ function createWindow() {
         win.show()
     })
 
-    const trayIcon = new Tray('src/core/images/logo.png')
+    initTray()
 }
 
 app.on('ready', () => {
@@ -35,10 +40,29 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
-app.on('activate', () => 
-{
-    if(win === null) 
-    {
-        createWindow()
-    }
-})
+
+function initTray() {
+    const trayIcon = new Tray('src/core/images/taskbar.png')
+
+    const contextMenu = Menu.buildFromTemplate([{
+            label: 'Item1',
+            type: 'radio'
+        },
+        {
+            label: 'Item2',
+            type: 'radio'
+        },
+        {
+            label: 'Item3',
+            type: 'radio',
+            checked: true
+        },
+        {
+            label: 'Item4',
+            type: 'radio'
+        }
+    ])
+
+    trayIcon.setToolTip('This is my application.')
+    trayIcon.setContextMenu(contextMenu)
+}

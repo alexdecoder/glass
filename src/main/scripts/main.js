@@ -1,5 +1,6 @@
 const currentWindow = require('electron').remote.getCurrentWindow()
 const electron = require('electron')
+
 window.onload = () => {
     if (process.platform == 'darwin')
     {
